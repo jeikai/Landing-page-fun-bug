@@ -122,7 +122,7 @@ const technologies = [
 
 const experiences = [
   {
-    title: "Second Prize in WebContest 2022",
+    title: "Second Prize in WebContest 2022 - Rabiloo",
     company_name: "Hanoi University of Science (HUS)",
     icon: hus,
     iconBg: "#ffffff",
@@ -134,7 +134,7 @@ const experiences = [
     ],
   },
   {
-    title: "Third Prize in Demo Day of GDSC 2024",
+    title: "Third Prize in Demo Day of GDSC 2024 - Fun Tree",
     company_name: "Google Developer Student Clubs (GDSC)",
     icon: gdsc,
     iconBg: "#ffffff",
@@ -175,31 +175,6 @@ const testimonials = [
 ];
 
 const projects = [
-  {
-    name: "BRONX LUGGAGE",
-    description:
-      "A luggage and handbag e-commerce website with full functionality.",
-    tags: [
-      {
-        name: "HTML",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "CSS",
-        color: "green-text-gradient",
-      },
-      {
-        name: "PHP",
-        color: "pink-text-gradient",
-      },
-      {
-        name: "SQL",
-        color: "white-text-gradient",
-      },
-    ],
-    image: brox,
-    source_code_link: "https://github.com/jeikai/eProject.git",
-  },
   {
     name: "FUN TREE",
     description:
@@ -308,31 +283,6 @@ const projects = [
     ],
     image: gameEdu,
     source_code_link: "https://github.com/Vuxz123/MCGame4Funbug.git",
-  },
-  {
-    name: "Secure Data Processing in Cyberspace",
-    description:
-      "A web app that crawls and clusters news for easy trend tracking.",
-    tags: [
-      {
-        name: "JavaScript",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "Python",
-        color: "green-text-gradient",
-      },
-      {
-        name: "Java Spring Boot",
-        color: "pink-text-gradient",
-      },
-      {
-        name: "React JS",
-        color: "white-text-gradient",
-      },
-    ],
-    image: crawl_data,
-    source_code_link: "https://github.com/20215459-phuongvv/TextCrawling.git",
   },
   {
     name: "LIGHT'S",
