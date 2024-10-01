@@ -27,6 +27,8 @@ import starbucks from "./company/starbucks.png";
 import tesla from "./company/tesla.png";
 import fpt from "./company/fpt.png"
 import viettel from "./company/viettel.png"
+import gdsc from "./company/gdsc.png"
+import hus from "./company/hus.jpg"
 
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
@@ -39,7 +41,7 @@ import fun_tree from "./fun_tree.png";
 import fun_course from "./fun_course.png";
 import website_manage_project from "./website_manage_project.png";
 import crawl_data from "./crawl_data.png";
-
+import gameEdu from "./gameEdu.jpg";
 export {
   logo,
   backend,
@@ -79,5 +81,8 @@ export {
   fun_tree,
   vehicle,
   website_manage_project,
-  crawl_data
+  crawl_data,
+  gdsc,
+  hus,
+  gameEdu
 };

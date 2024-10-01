@@ -33,7 +33,10 @@ import {
   vehicle,
   rabiloo,
   website_manage_project,
-  crawl_data
+  crawl_data,
+  hus,
+  gdsc,
+  gameEdu
 } from "../assets";
 
 export const navLinks = [
@@ -119,27 +122,27 @@ const technologies = [
 
 const experiences = [
   {
-    title: "Back-end intern",
-    company_name: "FPT Information System",
-    icon: fpt,
-    iconBg: "#E6DEDD",
-    date: "August 2023 - December 2023",
+    title: "Second Prize in WebContest 2022",
+    company_name: "Hanoi University of Science (HUS)",
+    icon: hus,
+    iconBg: "#ffffff",
+    date: "July 2022 - September 2022",
     points: [
-      "Learning basic Java and Java Spring Boot",
-      "Read and understand the product guarantee system on Sendo",
-      "Implementing mobile application named Light's.",
+      "Participated in WebContest 2022 organized by HUS",
+      "Developed a website from design to deployment",
+      "Won second prize in the competition"
     ],
   },
   {
-    title: "Devop intern",
-    company_name: "Viettel High Tech",
-    icon: viettel,
-    iconBg: "#E6DEDD",
-    date: "July 2024 - October 2024",
+    title: "Third Prize in Demo Day of GDSC 2024",
+    company_name: "Google Developer Student Clubs (GDSC)",
+    icon: gdsc,
+    iconBg: "#ffffff",
+    date: "January 2024 - March 2024",
     points: [
-      "Developing web applications using React.js and other related technologies such as Java Spring boot, Python, Flask, v.v.",
-      "Practicing code skills with Leetcode",
-      "Learning many other technologies including Docker, NginX, Message queue, v.v",
+      "Participated in GDSC 2024 competition focused on innovative app development",
+      "Demoed the project and won third prize in Demo Day",
+      "Developed the project using modern technologies such as React.js and Firebase"
     ],
   }
 ];
@@ -290,25 +293,21 @@ const projects = [
     source_code_link: "https://github.com/jeikai/courseHust.git",
   },
   {
-    name: "VEHICLE INSPECTION WEBSITE",
+    name: "MICROORGANISM EDUCATIONAL GAME",
     description:
-      "A web app that crawls and clusters news, helping readers easily follow trends.",
+      "An educational game that helps students better understand the world of microorganisms.",
     tags: [
       {
-        name: "React JS",
+        name: "Unity",
         color: "blue-text-gradient",
       },
       {
-        name: "Node JS",
-        color: "green-text-gradient",
-      },
-      {
-        name: "Tailwind",
+        name: "Game Development",
         color: "pink-text-gradient",
       },
     ],
-    image: vehicle,
-    source_code_link: "https://github.com/jeikai/dangkiem.git",
+    image: gameEdu,
+    source_code_link: "https://github.com/Vuxz123/MCGame4Funbug.git",
   },
   // {
   //   name: "Secure Data Processing in Cyberspace",
