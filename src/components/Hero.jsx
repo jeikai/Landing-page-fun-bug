@@ -1,50 +1,90 @@
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { ChevronDown } from "lucide-react";
+import companyData from "../data/companyData";
 
-import { styles } from "../styles";
-import { ComputersCanvas } from "./canvas";
+const backgroundImages = ["/bg_2.jpg", "/bg_1.jpg", "/bg_3.jpg", "/bg_4.jpg", "/bg_5.jpg", "/bg_6.jpg", "/bg_7.jpg", "/bg_8.jpg", "/bg_9.jpg"];
 
 const Hero = () => {
-  return (
-    <section className={`relative w-full h-screen mx-auto`}>
-      <div
-        className={`absolute inset-0 top-[120px]  max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
-      >
-        <div className='flex flex-col justify-center items-center mt-5'>
-          <div className='w-5 h-5 rounded-full bg-[#a03039]' />
-          <div className='w-1 sm:h-80 h-40' style={{ background: 'linear-gradient(#a03039, #050816)' }} />
-        </div>
+    const [currentIndex, setCurrentIndex] = useState(0);
 
-        <div>
-          <h1 className={`${styles.heroHeadText} text-white`}>
-            Hey, We're <span className='text-[#a03039]'>FunBug</span>
-          </h1>
-          <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            Application Developer, Freelancer <br className='sm:block hidden' />
-            
-          </p>
-        </div>
-      </div>
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % backgroundImages.length);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
 
-      <ComputersCanvas />
-      <div className='absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center'>
-        <a href='#about'>
-          <div className='w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2'>
-            <motion.div
-              animate={{
-                y: [0, 24, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                repeatType: "loop",
-              }}
-              className='w-3 h-3 rounded-full bg-secondary mb-1'
-            />
-          </div>
-        </a>
-      </div>
-    </section>
-  );
+    return (
+        <section className="relative min-h-screen w-full overflow-hidden">
+            <div className="absolute inset-0 z-0 transition-opacity duration-1000">
+                {backgroundImages.map((src, index) => (
+                    <div
+                        key={index}
+                        className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${index === currentIndex ? "opacity-100" : "opacity-0"
+                            }`}
+                        style={{ backgroundImage: `url(${src})` }}
+                    />
+                ))}
+            </div>
+
+            <div className="absolute inset-0 z-0 bg-gradient-to-br from-black/60 via-neutral-900/40 to-black/60 mix-blend-overlay backdrop-blur-sm" />
+
+            {/* Content */}
+            <div className="relative z-10 container mx-auto px-6 text-center pt-32 md:pt-40">
+                <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white mb-6 leading-tight drop-shadow">
+                    Xây dựng giải pháp{" "}
+                    <span className="text-[#a03039] inline-block relative group">
+                        <span className="inline-block transform transition-transform duration-700 hover:scale-105 hover:text-white">
+                            số sáng tạo
+                            {/* Underline luôn hiển thị */}
+                            <span className="block absolute -bottom-1 left-0 right-0 h-1 bg-[#a03039] scale-x-100 transition-transform origin-left duration-500"></span>
+                        </span>
+                    </span>
+                </h1>
+
+                <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-6 max-w-3xl mx-auto leading-relaxed">
+                    {companyData.mission}
+                </p>
+
+                <p className="text-md sm:text-lg text-white/80 mb-10 max-w-4xl mx-auto">
+                    {companyData.description}
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a
+                        href="#dự án"
+                        className="bg-[#a03039] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#8a2831] transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+                    >
+                        Khám phá dự án
+                    </a>
+                    <a
+                        href="#liên hệ"
+                        className="border-2 border-[#a03039] text-[#a03039] px-8 py-4 rounded-full font-semibold hover:bg-[#a03039] hover:text-white transition-all duration-300 transform hover:scale-105 shadow-md"
+                    >
+                        Liên hệ ngay
+                    </a>
+                </div>
+
+            </div>
+
+            {/* Bullet navigation */}
+            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+                {backgroundImages.map((_, idx) => (
+                    <button
+                        key={idx}
+                        onClick={() => setCurrentIndex(idx)}
+                        className={`w-3 h-3 rounded-full ${idx === currentIndex ? "bg-[#a03039]" : "bg-gray-300"
+                            } transition-all duration-300`}
+                    />
+                ))}
+            </div>
+
+            {/* Chevron xuống nếu muốn bật lại */}
+            {/* <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
+        <ChevronDown className="text-[#a03039]" size={36} />
+      </div> */}
+        </section>
+    );
 };
 
 export default Hero;

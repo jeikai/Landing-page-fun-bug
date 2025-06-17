@@ -1,136 +1,53 @@
-import React, { useRef, useState } from "react";
-import { motion } from "framer-motion";
-import emailjs from "@emailjs/browser";
-
-import { styles } from "../styles";
-import { EarthCanvas } from "./canvas";
-import { SectionWrapper } from "../hoc";
-import { slideIn } from "../utils/motion";
-
+import { Phone, Mail } from "lucide-react";
+import contactData from "../data/contactData";
+import { MapPin } from "lucide-react";
 const Contact = () => {
-  const formRef = useRef();
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+    return (
+        <section id="liên hệ" className="py-20 bg-gradient-to-br from-gray-900 to-[#a03039]">
+            <div className="container mx-auto px-6">
+                <div className="text-center mb-16">
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                        Liên hệ với chúng tôi
+                    </h2>
+                    <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+                        Sẵn sàng biến ý tưởng của bạn thành hiện thực? Hãy liên hệ ngay!
+                    </p>
+                </div>
 
-  const [loading, setLoading] = useState(false);
+                <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                    <div className="text-center group">
+                        <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-2">
+                            <div className="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-white/30 transition-all duration-300">
+                                <Phone className="text-white" size={24} />
+                            </div>
+                            <h3 className="text-lg font-bold text-white mb-2">Điện thoại</h3>
+                            <p className="text-gray-200">{contactData.phone}</p>
+                        </div>
+                    </div>
 
-  const handleChange = (e) => {
-    const { target } = e;
-    const { name, value } = target;
+                    <div className="text-center group">
+                        <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-2">
+                            <div className="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-white/30 transition-all duration-300">
+                                <Mail className="text-white" size={24} />
+                            </div>
+                            <h3 className="text-lg font-bold text-white mb-2">Email</h3>
+                            <p className="text-gray-200">{contactData.email}</p>
+                        </div>
+                    </div>
 
-    setForm({
-      ...form,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    emailjs
-      .send(
-        'portfolio',
-        'template_muq5h4k',
-        {
-          from_name: form.name,
-          to_name: "JavaScript Mastery",
-          from_email: form.email,
-          to_email: "sujata@jsmastery.pro",
-          message: form.message,
-        },
-        'hlrU7VtaYjjZkyv_G'
-      )
-      .then(
-        () => {
-          setLoading(false);
-          alert("Thank you. I will get back to you as soon as possible.");
-
-          setForm({
-            name: "",
-            email: "",
-            message: "",
-          });
-        },
-        (error) => {
-          setLoading(false);
-          console.error(error);
-
-          alert("Ahh, something went wrong. Please try again.");
-        }
-      );
-  };
-
-  return (
-    <div
-      className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
-    >
-      <motion.div
-        variants={slideIn("left", "tween", 0.2, 1)}
-        className='flex-[0.75] bg-black-100 p-8 rounded-2xl'
-      >
-        <p className={styles.sectionSubText}>Get in touch</p>
-        <h3 className={styles.sectionHeadText}>Contact.</h3>
-
-        <form
-          ref={formRef}
-          onSubmit={handleSubmit}
-          className='mt-12 flex flex-col gap-8'
-        >
-          <label className='flex flex-col'>
-            <span className='text-white font-medium mb-4'>Your Name</span>
-            <input
-              type='text'
-              name='name'
-              value={form.name}
-              onChange={handleChange}
-              placeholder="What's your name?"
-              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
-            />
-          </label>
-          <label className='flex flex-col'>
-            <span className='text-white font-medium mb-4'>Your email</span>
-            <input
-              type='email'
-              name='email'
-              value={form.email}
-              onChange={handleChange}
-              placeholder="What's your email address?"
-              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
-            />
-          </label>
-          <label className='flex flex-col'>
-            <span className='text-white font-medium mb-4'>Your Message</span>
-            <textarea
-              rows={7}
-              name='message'
-              value={form.message}
-              onChange={handleChange}
-              placeholder='What you want to say?'
-              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
-            />
-          </label>
-
-          <button
-            type='submit'
-            className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
-          >
-            {loading ? "Sending..." : "Send"}
-          </button>
-        </form>
-      </motion.div>
-
-      {/* <motion.div
-        variants={slideIn("right", "tween", 0.2, 1)}
-        className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
-      >
-        <EarthCanvas />
-      </motion.div> */}
-    </div>
-  );
+                    <div className="text-center group">
+                        <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-2">
+                            <div className="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-white/30 transition-all duration-300">
+                                <MapPin className="text-white" size={24} />
+                            </div>
+                            <h3 className="text-lg font-bold text-white mb-2">Địa chỉ</h3>
+                            <p className="text-gray-200">{contactData.address}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
 };
 
-export default SectionWrapper(Contact, "contact");
+export default Contact
