@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 import companyData from "../data/companyData";
 
-const backgroundImages = ["/bg_2.jpg", "/bg_1.jpg", "/bg_3.jpg", "/bg_4.jpg", "/bg_5.jpg", "/bg_6.jpg", "/bg_7.jpg", "/bg_8.jpg", "/bg_9.jpg"];
+const backgroundImages = ["/bg_2.jpg", "/bg_1.jpg", "/bg_3.jpg", "/bg_4.jpg", "/bg_5.jpg", "/bg_6.jpg", "/bg_7.jpg", "/bg_8.jpg", "/bg_9.jpg", "/bg_10.jpg"];
 
 const Hero = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
