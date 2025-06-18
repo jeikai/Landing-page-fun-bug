@@ -67,7 +67,6 @@ const Hero = () => {
 
             </div>
 
-            {/* Bullet navigation */}
             <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
                 {backgroundImages.map((_, idx) => (
                     <button
