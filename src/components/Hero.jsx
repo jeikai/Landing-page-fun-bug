@@ -59,7 +59,7 @@ const Hero = () => {
                     </a>
                     <a
                         href="#liên hệ"
-                        className="border-2 border-[#a03039] text-[#a03039] px-8 py-4 rounded-full font-semibold hover:bg-[#a03039] hover:text-white transition-all duration-300 transform hover:scale-105 shadow-md"
+                        className="border-2 border-[#a03039] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#a03039] hover:text-white transition-all duration-300 transform hover:scale-105 shadow-md"
                     >
                         Liên hệ ngay
                     </a>
