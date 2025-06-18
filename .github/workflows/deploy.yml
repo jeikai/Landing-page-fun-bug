@@ -22,11 +22,11 @@ jobs:
 
       - name: Copy project to EC2
         run: |
-          rsync -avz -e "ssh -p ${{ secrets.EC2_PORT }}" . ${{ secrets.EC2_HOST }}:~/react-app
+          rsync -avz -e "ssh -p ${{ secrets.EC2_PORT }}" . ubuntu@${{ secrets.EC2_HOST }}:~/react-app
 
       - name: Deploy on EC2
         run: |
-          ssh -p ${{ secrets.EC2_PORT }} ${{ secrets.EC2_HOST }} << 'EOF'
+          ssh -p ${{ secrets.EC2_PORT }} ubuntu@${{ secrets.EC2_HOST }} << 'EOF'
             cd ~/react-app
             docker-compose down
             docker-compose up --build -d
