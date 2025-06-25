@@ -31,7 +31,7 @@ const Projects = () => {
     const fetchProjects = async () => {
       try {
         const response = await axios.get("https://api.funbug.xyz/api/project");
-        console.log(response)
+
         if (response.data.success) {
           setProjects(response.data.data);
         }
