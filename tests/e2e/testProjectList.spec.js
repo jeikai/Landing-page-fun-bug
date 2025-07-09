@@ -1,32 +1,27 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Landing page flow', () => {
+test.describe('Header navigation scroll behavior', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('https://www.funbug.xyz/');
-    await page.waitForLoadState('networkidle'); 
   });
 
-  test('should navigate through featured projects', async ({ page }) => {
-    test.setTimeout(90000);
-
-    await page.getByText(/THIN BARBER/, { exact: false }).click();
-
-    await expect(page.getByRole('heading', { name: 'THIN BARBER SHOP' })).toBeVisible({ timeout: 10000 });
-    await expect(page.getByRole('heading', { name: 'Website Quản lý Dự án' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'RABILOO' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'FUN COURSE' })).toBeVisible();
+  test('should scroll to "Dịch vụ" section when clicked', async ({ page }) => {
+    await page.getByRole('link', { name: 'Dịch vụ' }).click();
+    await expect(page.getByRole('heading', { name: 'Dịch vụ của chúng tôi' })).toBeVisible();
   });
 
-  test('should click contact info and scroll to sections', async ({ page }) => {
-    await expect(page.getByRole('heading', { name: 'Xây dựng giải pháp số sáng tạo' }))
-      .toBeVisible({ timeout: 10000 });
+  test('should scroll to "Thành tựu" section when clicked', async ({ page }) => {
+    await page.getByRole('link', { name: 'Thành tựu' }).click();
+    await expect(page.getByRole('heading', { name: 'Thành tựu đạt được' })).toBeVisible();
+  });
 
-    await page.getByRole('heading', { name: 'Xây dựng giải pháp số sáng tạo' }).click();
+  test('should scroll to "Dự án" section when clicked', async ({ page }) => {
+    await page.getByRole('link', { name: 'Dự án', exact: true }).click();
+    await expect(page.getByRole('heading', { name: 'Dự án nổi bật' })).toBeVisible();
+  });
 
-    await expect(page.getByText(/Điện thoại.*0989194097/)).toBeVisible();
-    await page.getByText(/Điện thoại.*0989194097/).click();
-
-    await expect(page.getByText(/Email.*funbug0909@gmail.com/)).toBeVisible();
-    await page.getByText(/Email.*funbug0909@gmail.com/).click();
+  test('should scroll to "Liên hệ" section when clicked', async ({ page }) => {
+    await page.getByRole('link', { name: 'Liên hệ', exact: true }).click();
+    await expect(page.getByRole('heading', { name: 'Liên hệ với chúng tôi' })).toBeVisible();
   });
 });
