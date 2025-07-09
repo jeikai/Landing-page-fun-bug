@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Landing page flow', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:5173/');
+    await page.goto('https://www.funbug.xyz/');
   });
 
   test('should navigate through featured projects', async ({ page }) => {
