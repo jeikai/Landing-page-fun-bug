@@ -3,45 +3,11 @@ name: CI/CD for React App
 on:
   push:
     branches:
-      - '**'  # chạy cho mọi branch
+      - '**'
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    outputs:
-      is_main: ${{ steps.check_branch.outputs.is_main }}
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Node.js setup
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ secrets.node_version }}
-
-      - name: Check if branch is main
-        id: check_branch
-        run: |
-          echo "Running on branch: ${{ github.ref_name }}"
-          if [ "${{ github.ref_name }}" = "main" ]; then
-            echo "is_main=true" >> $GITHUB_OUTPUT
-          else
-            echo "is_main=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run linter
-        run: npm run lint
-
-      - name: Build app
-        run: npm run build
-
   deploy:
-    needs: build
-    if: needs.build.outputs.is_main == 'true'
+    if: github.ref_name == 'main'
     runs-on: ubuntu-latest
 
     steps:
@@ -78,9 +44,10 @@ jobs:
 
 
   test:
-    needs: deploy
-    if: needs.build.outputs.is_main == 'true'
+    if: github.ref_name != 'main'
     runs-on: ubuntu-latest
+    outputs:
+      tests_passed: ${{ steps.set_output.outputs.tests_passed }}
 
     steps:
       - name: Checkout code
@@ -103,3 +70,30 @@ jobs:
       - name: Run e2e tests
         run: npm run test:e2e
 
+      - name: Set test output
+        id: set_output
+        run: echo "tests_passed=true" >> $GITHUB_OUTPUT
+
+
+  build:
+    if: github.ref_name != 'main'
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Node.js setup
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ secrets.node_version }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run linter
+        run: npm run lint
+
+      - name: Build app
+        run: npm run build
