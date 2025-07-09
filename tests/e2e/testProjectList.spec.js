@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('Landing page flow', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('https://www.funbug.xyz/');
-    await page.waitForLoadState('networkidle'); // đảm bảo tải xong nội dung
+    await page.waitForLoadState('networkidle'); 
   });
 
   test('should navigate through featured projects', async ({ page }) => {
