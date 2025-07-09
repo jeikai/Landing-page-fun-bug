@@ -1,3 +1,4 @@
+/* eslint-env jest */
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import Hero from '../../src/components/Hero';
 import companyData from '../../src/data/companyData';

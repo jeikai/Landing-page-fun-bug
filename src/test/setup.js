@@ -1,4 +1,4 @@
-
+/* eslint-env jest */
 import '@testing-library/jest-dom';
 
 Object.defineProperty(window, 'matchMedia', {

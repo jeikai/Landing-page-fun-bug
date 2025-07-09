@@ -61,7 +61,7 @@ const Projects = () => {
           <p className="text-center text-gray-500">Đang tải dữ liệu...</p>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {projects.map((project, index) => {
+            {projects.map((project) => {
               const randomGradient = getRandomGradient();
 
               return (
