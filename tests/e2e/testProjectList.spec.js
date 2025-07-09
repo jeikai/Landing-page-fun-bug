@@ -8,8 +8,6 @@ test.describe('Landing page flow', () => {
   test('should navigate through featured projects', async ({ page }) => {
     test.setTimeout(60000);
 
-    await page.reload();
-
     await page.getByText('Web PlatformLinkTHIN BARBER').click();
     await expect(page.getByRole('heading', { name: 'THIN BARBER SHOP' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Website Quản lý Dự án' })).toBeVisible();
