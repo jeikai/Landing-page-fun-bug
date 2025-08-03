@@ -7,7 +7,11 @@ const projectsData = [
     technologies: ["Flutter", "Dart", "Node.js", "JavaScript", "AI/ML"],
     link: "https://github.com/",
     status: "Completed",
-    year: "2024"
+    year: "2024",
+    images: [
+      "https://placehold.co/600x400",
+      "https://placehold.co/600x400"
+    ]
   },
   {
     id: 2,
@@ -17,7 +21,10 @@ const projectsData = [
     technologies: ["Nuxt.js", "TypeScript", "JavaScript", "PostgreSQL"],
     link: "https://github.com/",
     status: "Completed",
-    year: "2023"
+    year: "2023",
+    images: [
+
+    ]
   },
   {
     id: 3,
@@ -27,7 +34,11 @@ const projectsData = [
     technologies: ["React.js", "PHP", "MySQL", "JavaScript", "Computer Vision"],
     link: "https://github.com/",
     status: "Completed",
-    year: "2022"
+    year: "2022",
+    images: [
+      "https://placehold.co/600x400",
+      "https://placehold.co/600x400"
+    ]
   },
   {
     id: 4,
@@ -37,7 +48,11 @@ const projectsData = [
     technologies: ["React.js", "Node.js", "JavaScript", "AI Recommendation"],
     link: "https://github.com/",
     status: "Completed",
-    year: "2024"
+    year: "2024",
+    images: [
+      "https://placehold.co/600x400",
+      "https://placehold.co/600x400"
+    ]
   },
   {
     id: 5,
@@ -47,7 +62,11 @@ const projectsData = [
     technologies: ["Unity", "C#", "Game Development", "Educational Design"],
     link: "https://github.com/",
     status: "Completed",
-    year: "2023"
+    year: "2023",
+    images: [
+      "https://placehold.co/600x400",
+      "https://placehold.co/600x400"
+    ]
   },
   {
     id: 6,
@@ -57,7 +76,11 @@ const projectsData = [
     technologies: ["Flutter", "Firebase", "Node.js", "JavaScript", "Dart"],
     link: "https://github.com/",
     status: "Completed",
-    year: "2024"
+    year: "2024",
+    images: [
+      "https://placehold.co/600x400",
+      "https://placehold.co/600x400"
+    ]
   }
   ,
   {
@@ -68,7 +91,11 @@ const projectsData = [
     technologies: ["React JS"],
     link: "https://thinbabershop.com/",
     status: "Completed",
-    year: "2024"
+    year: "2024",
+    images: [
+      "https://placehold.co/600x400",
+      "https://placehold.co/600x400"
+    ]
   }
 ];
 
