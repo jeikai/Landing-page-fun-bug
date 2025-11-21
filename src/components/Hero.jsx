@@ -15,7 +15,7 @@ const Hero = () => {
     }, []);
 
     return (
-        <section className="relative min-h-screen w-full overflow-hidden">
+        <section id="home" className="relative min-h-screen w-full overflow-hidden">
             <div className="absolute inset-0 z-0 transition-opacity duration-1000">
                 {backgroundImages.map((src, index) => (
                     <div
@@ -32,10 +32,10 @@ const Hero = () => {
             {/* Content */}
             <div className="relative z-10 container mx-auto px-6 text-center pt-32 md:pt-40">
                 <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white mb-6 leading-tight drop-shadow">
-                    Xây dựng giải pháp{" "}
+                    Building innovative{" "}
                     <span className="text-[#a03039] inline-block relative group">
                         <span className="inline-block transform transition-transform duration-700 hover:scale-105 hover:text-white">
-                            số sáng tạo
+                            digital solutions
                             {/* Underline luôn hiển thị */}
                             <span className="block absolute -bottom-1 left-0 right-0 h-1 bg-[#a03039] scale-x-100 transition-transform origin-left duration-500"></span>
                         </span>
@@ -52,16 +52,16 @@ const Hero = () => {
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <a
-                        href="#dự án"
+                        href="#projects"
                         className="bg-[#a03039] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#8a2831] transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
                     >
-                        Khám phá dự án
+                        Explore Projects
                     </a>
                     <a
-                        href="#liên hệ"
+                        href="#contact"
                         className="border-2 border-[#a03039] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#a03039] hover:text-white transition-all duration-300 transform hover:scale-105 shadow-md"
                     >
-                        Liên hệ ngay
+                        Contact Now
                     </a>
                 </div>
 

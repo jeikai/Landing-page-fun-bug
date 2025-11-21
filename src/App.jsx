@@ -25,7 +25,7 @@ function App() {
       <Contact />
       <Footer />
 
-      {/* Optional: CSS animation nếu cần dùng inline */}
+      {/* Optional: CSS animations for inline use */}
       <style jsx>{`
         @keyframes fade-in-up {
           from {
