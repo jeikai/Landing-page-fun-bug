@@ -6,7 +6,7 @@ const Achievements = () => {
         <section id="thành tựu" className="py-20 bg-gradient-to-br from-red-50 to-white">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[#8d2c70] via-[#ff6b6b] to-[#6a1d99] bg-clip-text text-transparent leading-[1.2]">
                         Thành tựu đạt được
                     </h2>
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto">
