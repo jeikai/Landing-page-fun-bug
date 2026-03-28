@@ -1,116 +1,133 @@
-import { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { ExternalLink } from "lucide-react";
-import Slider from "react-slick";
-import projectsData from "../data/projectsData";
+import { ArrowUpRight, ExternalLink } from 'lucide-react';
+import projectsData from '../data/projectsData';
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+const getPrimaryImage = (project) => {
+  if (project.images && project.images.length > 0) {
+    return project.images[0];
+  }
+
+  return '/bg_1.jpg';
+};
+
+const getSecondaryImage = (project) => {
+  if (project.images && project.images.length > 1) {
+    return project.images[1];
+  }
+
+  return getPrimaryImage(project);
+};
 
 const Projects = () => {
-  useEffect(() => {
-    AOS.init({ duration: 800, once: true });
-  }, []);
-
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    arrows: false,
-    slidesToShow: 1,
-    slidesToScroll: 1
-  };
-
   return (
-    <section
-      id="dự án"
-      className="py-24 bg-gradient-to-b from-white via-red-50 to-white scroll-mt-20"
-    >
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-[#a03039] mb-4 drop-shadow-sm">
-            Dự án nổi bật
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Những dự án thể hiện kỹ năng và kinh nghiệm thông qua các ví dụ thực tế
+    <section id="dự án" className="scroll-mt-20 px-4 py-14 md:px-6 md:py-16">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-10 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div>
+            <span className="section-title-chip">Selected Work</span>
+            <h2 className="mt-4 text-4xl font-bold text-[#141414] md:text-5xl">Dự án nổi bật</h2>
+          </div>
+          <p className="max-w-2xl text-base leading-relaxed text-[#141414]/70 md:text-lg">
+            Những dự án thể hiện kỹ năng và kinh nghiệm thông qua các ví dụ thực tế.
           </p>
         </div>
 
-        <div className="flex flex-col gap-10">
-          {projectsData.map((project) => (
-            <div
+        <div className="grid gap-6">
+          {projectsData.map((project, index) => (
+            <article
               key={project.id}
               data-aos="fade-up"
-              className="flex flex-col md:flex-row items-stretch rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-200 bg-white overflow-hidden"
+              className={`card-shell offset-shadow grid overflow-hidden ${
+                index % 2 === 0 ? 'md:grid-cols-[0.95fr_1.05fr]' : 'md:grid-cols-[1.05fr_0.95fr]'
+              }`}
             >
-              {/* Slider hoặc ảnh mặc định */}
-              <div className="w-full md:w-1/2 h-60 md:h-auto">
-                {project.images && project.images.length > 0 ? (
-                  <Slider {...sliderSettings}>
-                    {project.images.map((img, i) => (
-                      <img
-                        key={i}
-                        src={img}
-                        alt={project.name}
-                        className="w-full h-full object-cover"
-                      />
-                    ))}
-                  </Slider>
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-400 text-sm">
-                    Không có ảnh minh hoạ
+              <div
+                className={`relative min-h-[320px] border-b-2 border-[#141414] p-4 md:border-b-0 ${
+                  index % 2 === 0 ? 'md:border-r-2' : 'md:order-2 md:border-l-2'
+                }`}
+              >
+                <div className="grid h-full gap-3 sm:grid-cols-[1fr_0.42fr]">
+                  <div className="relative overflow-hidden rounded-2xl border-2 border-[#141414]">
+                    <img
+                      src={getPrimaryImage(project)}
+                      alt={project.name}
+                      className="h-full min-h-[220px] w-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/0 to-transparent" />
+                    <span className="absolute left-3 top-3 rounded-full border-2 border-[#141414] bg-white px-3 py-1 text-xs font-extrabold uppercase tracking-[0.08em]">
+                      {project.year}
+                    </span>
                   </div>
-                )}
+
+                  <div className="hidden gap-3 sm:grid">
+                    <img
+                      src={getSecondaryImage(project)}
+                      alt={`${project.name} preview`}
+                      className="h-full rounded-2xl border-2 border-[#141414] object-cover"
+                    />
+                  </div>
+                </div>
               </div>
 
-              {/* Nội dung */}
-              <div className="w-full md:w-1/2 flex flex-col justify-between">
-                {/* Header */}
-                <div className="p-6 bg-[#a03039] text-white flex flex-col gap-3">
-                  <div className="flex items-center justify-between">
-                    <span className="bg-white/20 px-3 py-1 rounded-full text-sm font-semibold">
+              <div className={`flex flex-col justify-between p-7 ${index % 2 === 0 ? '' : 'md:order-1'}`}>
+                <div>
+                  <div className="mb-4 flex items-center justify-between gap-3">
+                    <span className="rounded-full border-2 border-[#141414] bg-[#f8e6e8] px-3 py-1 text-xs font-bold uppercase tracking-[0.08em]">
                       {project.category}
                     </span>
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white opacity-70 hover:opacity-100"
+                    <span
+                      className={`rounded-full border-2 border-[#141414] px-3 py-1 text-xs font-extrabold ${
+                        project.status === 'Completed'
+                          ? 'bg-[#a03039] text-white'
+                          : 'bg-[#ffd66e] text-[#141414]'
+                      }`}
                     >
-                      <ExternalLink size={20} />
-                    </a>
+                      {project.status}
+                    </span>
                   </div>
-                  <h3 className="text-2xl font-bold drop-shadow">{project.name}</h3>
-                  <span
-                    className={`text-xs font-semibold rounded px-3 py-1 inline-block w-fit ${
-                      project.status === "Completed"
-                        ? "bg-green-100 text-green-800"
-                        : "bg-yellow-100 text-yellow-800"
-                    }`}
-                  >
-                    {project.status}
-                  </span>
+
+                  <h3 className="text-2xl font-bold text-[#141414]">{project.name}</h3>
+                  <p className="mt-4 leading-relaxed text-[#141414]/75">{project.description}</p>
                 </div>
 
-                {/* Description & Techs */}
-                <div className="p-6 flex flex-col justify-between flex-grow">
-                  <p className="text-gray-700 text-sm sm:text-base mb-4 leading-relaxed">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-auto">
-                    {project.technologies.map((tech, i) => (
-                      <span
-                        key={i}
-                        className="bg-[#fff0f1] text-[#a03039] px-3 py-1 rounded-full text-xs sm:text-sm font-medium shadow-sm"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {project.technologies.slice(0, 4).map((tech) => (
+                    <span
+                      key={`${project.id}-${tech}`}
+                      className="rounded-full border-2 border-[#141414] bg-white px-3 py-1 text-xs font-bold"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                  {project.technologies.length > 4 ? (
+                    <span className="rounded-full border-2 border-[#141414] bg-[#141414] px-3 py-1 text-xs font-bold text-white">
+                      +{project.technologies.length - 4}
+                    </span>
+                  ) : null}
+                </div>
+
+                <div className="mt-7 flex items-center justify-between">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full border-2 border-[#141414] bg-[#141414] px-5 py-2 text-sm font-extrabold text-white transition hover:bg-[#a03039]"
+                  >
+                    Xem chi tiết
+                    <ArrowUpRight size={16} />
+                  </a>
+
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#141414] bg-white text-[#141414] transition hover:bg-[#f8e6e8]"
+                    aria-label={`Truy cập dự án ${project.name}`}
+                  >
+                    <ExternalLink size={16} />
+                  </a>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>

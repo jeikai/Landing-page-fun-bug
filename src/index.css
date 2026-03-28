@@ -1,1 +1,69 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import 'tailwindcss';
+
+:root {
+  --primary-color: #a03039;
+  --primary-soft: #f8e6e8;
+  --ink: #141414;
+  --paper: #f6f4ef;
+  --card: #fffdf9;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Manrope', sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 20% 0%, #ffffff 0%, transparent 35%),
+    radial-gradient(circle at 85% 5%, #f3d7da 0%, transparent 30%),
+    var(--paper);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.section-title-chip {
+  display: inline-flex;
+  align-items: center;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--ink);
+  padding: 0.35rem 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.offset-shadow {
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.offset-shadow-sm {
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.card-shell {
+  border: 2px solid var(--ink);
+  border-radius: 1.5rem;
+  background: var(--card);
+}
+
+.noise-grid {
+  background-image:
+    linear-gradient(to right, rgba(20, 20, 20, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(20, 20, 20, 0.06) 1px, transparent 1px);
+  background-size: 36px 36px;
+}

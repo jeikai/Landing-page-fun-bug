@@ -1,41 +1,43 @@
-import achievementsData from "../data/achievementsData";
-import { Award } from "lucide-react";
+import { Award, Sparkles } from 'lucide-react';
+import achievementsData from '../data/achievementsData';
 
 const Achievements = () => {
-    return (
-        <section id="thành tựu" className="py-20 bg-gradient-to-br from-red-50 to-white">
-            <div className="container mx-auto px-6">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                        Thành tựu đạt được
-                    </h2>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                        Những giải thưởng và thành tựu nổi bật trong hành trình phát triển của FunBug
-                    </p>
-                </div>
+  return (
+    <section id="thành tựu" className="px-4 py-14 md:px-6 md:py-16">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-10 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div>
+            <span className="section-title-chip">Highlights</span>
+            <h2 className="mt-4 text-4xl font-bold text-[#141414] md:text-5xl">Thành tựu đạt được</h2>
+          </div>
+          <p className="max-w-2xl text-base leading-relaxed text-[#141414]/70 md:text-lg">
+            Những giải thưởng và thành tựu nổi bật trong hành trình phát triển của FunBug.
+          </p>
+        </div>
 
-                <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                    {achievementsData.map((achievement, index) => (
-                        <div key={index} className="group">
-                            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-l-4 border-[#a03039]">
-                                <div className="flex items-start mb-4">
-                                    <div className="bg-[#a03039] p-3 rounded-full mr-4">
-                                        <Award className="text-white" size={24} />
-                                    </div>
-                                    <div className="flex-1">
-                                        <span className="text-sm text-[#a03039] font-semibold">{achievement.period}</span>
-                                        <h3 className="text-xl font-bold text-gray-900 mt-1 mb-2">{achievement.title}</h3>
-                                        <p className="text-gray-600 font-medium mb-3">{achievement.organization}</p>
-                                    </div>
-                                </div>
-                                <p className="text-gray-600 leading-relaxed">{achievement.description}</p>
-                            </div>
-                        </div>
-                    ))}
+        <div className="grid gap-6 lg:grid-cols-2">
+          {achievementsData.map((achievement) => (
+            <article key={achievement.id} data-aos="fade-up" className="card-shell offset-shadow p-7">
+              <div className="mb-5 flex items-start justify-between gap-4">
+                <div>
+                  <p className="mb-2 inline-flex items-center gap-2 rounded-full border-2 border-[#141414] bg-white px-3 py-1 text-xs font-extrabold uppercase tracking-[0.08em] text-[#141414]/70">
+                    <Sparkles size={14} className="text-[#a03039]" />
+                    {achievement.period}
+                  </p>
+                  <h3 className="text-2xl font-bold text-[#141414]">{achievement.title}</h3>
+                  <p className="mt-2 font-semibold text-[#141414]/70">{achievement.subtitle}</p>
                 </div>
-            </div>
-        </section>
-    );
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl border-2 border-[#141414] bg-[#a03039] text-white">
+                  <Award size={22} />
+                </span>
+              </div>
+              <p className="leading-relaxed text-[#141414]/80">{achievement.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
-export default Achievements
+export default Achievements;

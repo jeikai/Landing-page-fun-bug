@@ -1,63 +1,64 @@
-import { Phone, Mail } from "lucide-react";
-import contactData from "../data/contactData";
-import companyData from "../data/companyData";
-import { MapPin } from "lucide-react";
-import servicesData from "../data/servicesData";
+import { Mail, MapPin, Phone } from 'lucide-react';
+import companyData from '../data/companyData';
+import contactData from '../data/contactData';
+import servicesData from '../data/servicesData';
+
+const quickLinks = ['Trang chủ', 'Dịch vụ', 'Thành tựu', 'Dự án', 'Liên hệ'];
 
 const Footer = () => {
-    return (
-        <footer className="bg-gray-900 text-white py-12">
-            <div className="container mx-auto px-6">
-                <div className="grid md:grid-cols-4 gap-8">
-                    <div className="col-span-2">
-                        <h3 className="text-2xl font-bold text-[#a03039] mb-4">{companyData.name}</h3>
-                        <p className="text-gray-400 mb-6 max-w-md">
-                            {companyData.mission}
-                        </p>
-                        <div className="space-y-2">
-                            <div className="flex items-center">
-                                <Phone size={16} className="mr-3 text-[#a03039]" />
-                                <span>{contactData.phone}</span>
-                            </div>
-                            <div className="flex items-center">
-                                <Mail size={16} className="mr-3 text-[#a03039]" />
-                                <span>{contactData.email}</span>
-                            </div>
-                            <div className="flex items-center">
-                                <MapPin size={16} className="mr-3 text-[#a03039]" />
-                                <span>{contactData.address}</span>
-                            </div>
-                        </div>
-                    </div>
+  return (
+    <footer className="px-4 pb-8 pt-14 md:px-6 md:pb-10">
+      <div className="mx-auto max-w-6xl card-shell offset-shadow overflow-hidden bg-[#fffdf9] text-[#141414]">
+        <div className="grid gap-8 border-b-2 border-[#141414]/20 p-7 md:grid-cols-[1.2fr_0.8fr_0.8fr] md:p-10">
+          <div>
+            <h3 className="text-3xl font-bold text-[#a03039]">{companyData.name}</h3>
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-[#141414]/75">{companyData.mission}</p>
 
-                    <div>
-                        <h4 className="font-bold mb-4">Dịch vụ</h4>
-                        <ul className="space-y-2 text-gray-400">
-                            {servicesData.map((service, index) => (
-                                <li key={index} className="hover:text-[#a03039] transition-colors cursor-pointer">
-                                    {service.title}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4 className="font-bold mb-4">Liên kết</h4>
-                        <ul className="space-y-2 text-gray-400">
-                            <li className="hover:text-[#a03039] transition-colors cursor-pointer">Trang chủ</li>
-                            <li className="hover:text-[#a03039] transition-colors cursor-pointer">Về chúng tôi</li>
-                            <li className="hover:text-[#a03039] transition-colors cursor-pointer">Dự án</li>
-                            <li className="hover:text-[#a03039] transition-colors cursor-pointer">Liên hệ</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-                    <p>&copy; 2025 {companyData.name}. Tất cả quyền được bảo lưu.</p>
-                </div>
+            <div className="mt-6 grid gap-3 text-sm text-[#141414]/85">
+              <p className="flex items-center gap-2">
+                <Phone size={15} className="text-[#a03039]" />
+                {contactData.phone}
+              </p>
+              <p className="flex items-center gap-2">
+                <Mail size={15} className="text-[#a03039]" />
+                {contactData.email}
+              </p>
+              <p className="flex items-center gap-2">
+                <MapPin size={15} className="text-[#a03039]" />
+                {contactData.address}
+              </p>
             </div>
-        </footer>
-    );
+          </div>
+
+          <div>
+            <h4 className="text-sm font-extrabold uppercase tracking-[0.1em] text-[#141414]/60">Dịch vụ</h4>
+            <ul className="mt-4 space-y-2 text-sm text-[#141414]/80">
+              {servicesData.map((service) => (
+                <li key={service.id}>{service.title}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-extrabold uppercase tracking-[0.1em] text-[#141414]/60">Liên kết</h4>
+            <ul className="mt-4 space-y-2 text-sm text-[#141414]/80">
+              {quickLinks.map((link) => (
+                <li key={link}>
+                  <a href={`#${link.toLowerCase()}`} className="transition hover:text-[#a03039]">
+                    {link}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="p-5 text-center text-xs font-semibold tracking-[0.07em] text-[#141414]/60 md:p-6">
+          &copy; 2026 {companyData.name}. Tất cả quyền được bảo lưu.
+        </div>
+      </div>
+    </footer>
+  );
 };
 
-export default Footer
+export default Footer;

@@ -1,68 +1,92 @@
-import { useState, useEffect } from "react";
-import companyData from "../data/companyData";
-import { Menu, X } from "lucide-react";
+import { useEffect, useState } from 'react';
+import { Menu, X } from 'lucide-react';
+import companyData from '../data/companyData';
+
+const navItems = ['Trang chủ', 'Dịch vụ', 'Thành tựu', 'Dự án', 'Liên hệ'];
 
 const Header = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 18);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-    return (
-        <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
-            }`}>
-            <nav className="container mx-auto px-6 py-4">
-                <div className="flex items-center justify-between">
-                    {/* Logo + Company Name */}
-                    <div className="flex items-center space-x-3">
-                        <img
-                            src="./logo.png"
-                            alt="Logo"
-                            className="w-15 h-15 object-contain"
-                        />
-                        <div className="text-2xl font-bold text-[#a03039] whitespace-nowrap">
-                            {companyData.name}
-                        </div>
-                    </div>
+  return (
+    <header className="sticky top-0 z-50 px-4 pt-4 md:px-6">
+      <nav
+        className={`mx-auto max-w-6xl rounded-full border-2 border-[#141414] transition-all duration-300 ${
+          isScrolled
+            ? 'bg-[#fffdf9]/95 backdrop-blur-md offset-shadow-sm'
+            : 'bg-[#fffdf9]'
+        }`}
+      >
+        <div className="flex items-center justify-between px-5 py-3 md:px-7">
+          <a href="#trang chủ" className="flex items-center gap-3">
+            <img src="./logo.png" alt="Logo" className="h-11 w-11 rounded-full border-2 border-[#141414]" />
+            <div>
+              <p className="text-xl font-bold leading-none text-[#a03039]">
+                {companyData.name}
+              </p>
+              <p className="hidden text-xs font-semibold uppercase tracking-[0.18em] text-[#141414]/60 md:block">
+                Digital Partner
+              </p>
+            </div>
+          </a>
 
-                    {/* Desktop Menu */}
-                    <div className="hidden md:flex space-x-8">
-                        {['Trang chủ', 'Dịch vụ', 'Thành tựu', 'Dự án', 'Liên hệ'].map((item) => (
-                            <a key={item} href={`#${item.toLowerCase()}`}
-                                className={` ${isScrolled ? 'text-gray-700' : 'text-white'} hover:text-[#a03039] transition-colors font-medium`}>
-                                {item}
-                            </a>
-                        ))}
-                    </div>
+          <div className="hidden items-center gap-2 lg:flex">
+            {navItems.map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="rounded-full border-2 border-transparent px-4 py-2 text-sm font-bold text-[#141414] transition hover:border-[#141414] hover:bg-[#f8e6e8]"
+              >
+                {item}
+              </a>
+            ))}
+          </div>
 
-                    {/* Mobile Menu Button */}
-                    <button
-                        className="md:hidden"
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    >
-                        {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                    </button>
-                </div>
+          <div className="hidden md:block">
+            <a
+              href="#liên hệ"
+              className="inline-flex items-center rounded-full border-2 border-[#141414] bg-[#a03039] px-5 py-2 text-sm font-extrabold text-white transition hover:-translate-y-0.5"
+            >
+              Bắt đầu dự án
+            </a>
+          </div>
 
-                {isMenuOpen && (
-                    <div className="md:hidden mt-4 py-4 bg-white rounded-lg shadow-lg">
-                        {['Trang chủ', 'Dịch vụ', 'Thành tựu', 'Dự án', 'Liên hệ'].map((item) => (
-                            <a key={item} href={`#${item.toLowerCase()}`}
-                                className="block px-4 py-2 text-gray-700 hover:text-[#a03039] hover:bg-gray-50 transition-colors">
-                                {item}
-                            </a>
-                        ))}
-                    </div>
-                )}
-            </nav>
-        </header>
-    );
+          <button
+            className="rounded-full border-2 border-[#141414] bg-white p-2 lg:hidden"
+            aria-label="Toggle menu"
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+          >
+            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+
+        {isMenuOpen && (
+          <div className="border-t-2 border-[#141414] bg-[#fffdf9] px-4 pb-4 pt-3 lg:hidden">
+            <div className="grid gap-2">
+              {navItems.map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="rounded-xl border-2 border-[#141414] bg-white px-4 py-2 text-sm font-bold"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </nav>
+    </header>
+  );
 };
 
 export default Header;
