@@ -1,108 +1,64 @@
-import { Phone, Mail } from "lucide-react";
-import contactData from "../data/contactData";
-import companyData from "../data/companyData";
-import { MapPin } from "lucide-react";
-import servicesData from "../data/servicesData";
+import { Mail, MapPin, Phone } from 'lucide-react';
+import companyData from '../data/companyData';
+import contactData from '../data/contactData';
+import servicesData from '../data/servicesData';
+
+const quickLinks = ['Trang chủ', 'Dịch vụ', 'Thành tựu', 'Dự án', 'Liên hệ'];
 
 const Footer = () => {
-    return (
-        <footer className="bg-gradient-to-br from-gray-900 to-[#a03039] text-white relative overflow-hidden">
-            {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-5">
-                <div className="absolute inset-0" style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='white' fill-opacity='0.1'%3E%3Cpath d='M0 0h80v80H0V0zm20 20v40h40V20H20zm20 35a15 15 0 1 1 0-30 15 15 0 0 1 0 30z' fill-rule='evenodd'/%3E%3C/g%3E%3C/svg%3E")`,
-                }}></div>
+  return (
+    <footer className="px-4 pb-8 pt-14 md:px-6 md:pb-10">
+      <div className="mx-auto max-w-6xl card-shell offset-shadow overflow-hidden bg-[#fffdf9] text-[#141414]">
+        <div className="grid gap-8 border-b-2 border-[#141414]/20 p-7 md:grid-cols-[1.2fr_0.8fr_0.8fr] md:p-10">
+          <div>
+            <h3 className="text-3xl font-bold text-[#a03039]">{companyData.name}</h3>
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-[#141414]/75">{companyData.mission}</p>
+
+            <div className="mt-6 grid gap-3 text-sm text-[#141414]/85">
+              <p className="flex items-center gap-2">
+                <Phone size={15} className="text-[#a03039]" />
+                {contactData.phone}
+              </p>
+              <p className="flex items-center gap-2">
+                <Mail size={15} className="text-[#a03039]" />
+                {contactData.email}
+              </p>
+              <p className="flex items-center gap-2">
+                <MapPin size={15} className="text-[#a03039]" />
+                {contactData.address}
+              </p>
             </div>
-            
-            <div className="container mx-auto px-6 py-16 relative z-10">
-                <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-12">
-                    <div className="lg:col-span-2">
-                        <div className="flex items-center mb-6">
-                            <img
-                                src="./logo.png"
-                                alt="Logo"
-                                className="w-12 h-12 object-contain mr-4"
-                            />
-                            <h3 className="text-3xl font-black text-white">{companyData.name}</h3>
-                        </div>
-                        <p className="text-gray-300 mb-8 max-w-md text-lg leading-relaxed">
-                            {companyData.mission}
-                        </p>
-                        <div className="space-y-4">
-                            <div className="flex items-center group">
-                                <div className="bg-white/20 p-2 rounded-lg mr-4 group-hover:bg-white/30 transition-all duration-300">
-                                    <Phone size={18} className="text-white" />
-                                </div>
-                                <span className="text-gray-300 group-hover:text-white transition-colors duration-300">{contactData.phone}</span>
-                            </div>
-                            <div className="flex items-center group">
-                                <div className="bg-white/20 p-2 rounded-lg mr-4 group-hover:bg-white/30 transition-all duration-300">
-                                    <Mail size={18} className="text-white" />
-                                </div>
-                                <span className="text-gray-300 group-hover:text-white transition-colors duration-300">{contactData.email}</span>
-                            </div>
-                            <div className="flex items-center group">
-                                <div className="bg-white/20 p-2 rounded-lg mr-4 group-hover:bg-white/30 transition-all duration-300">
-                                    <MapPin size={18} className="text-white" />
-                                </div>
-                                <span className="text-gray-300 group-hover:text-white transition-colors duration-300">{contactData.address}</span>
-                            </div>
-                        </div>
-                    </div>
+          </div>
 
-                    <div>
-                        <h4 className="font-black text-xl mb-6 text-white">Our Services</h4>
-                        <ul className="space-y-3">
-                            {servicesData.map((service, index) => (
-                                <li key={index} className="text-gray-300 hover:text-white transition-colors cursor-pointer flex items-center group">
-                                    <span className="w-2 h-2 bg-white/40 rounded-full mr-3 group-hover:bg-white transition-colors duration-300"></span>
-                                    {service.title}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+          <div>
+            <h4 className="text-sm font-extrabold uppercase tracking-[0.1em] text-[#141414]/60">Dịch vụ</h4>
+            <ul className="mt-4 space-y-2 text-sm text-[#141414]/80">
+              {servicesData.map((service) => (
+                <li key={service.id}>{service.title}</li>
+              ))}
+            </ul>
+          </div>
 
-                    <div>
-                        <h4 className="font-black text-xl mb-6 text-white">Quick Links</h4>
-                        <ul className="space-y-3">
-                            {['Home', 'About Us', 'Services', 'Projects', 'Contact'].map((item, index) => (
-                                <li key={index} className="text-gray-300 hover:text-white transition-colors cursor-pointer flex items-center group">
-                                    <span className="w-2 h-2 bg-white/40 rounded-full mr-3 group-hover:bg-white transition-colors duration-300"></span>
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
-                        
-                        <div className="mt-8">
-                            <h5 className="font-bold text-white mb-4">Follow Us</h5>
-                            <div className="flex space-x-4">
-                                <div className="bg-white/20 p-3 rounded-xl hover:bg-white/30 transition-all duration-300 cursor-pointer transform hover:scale-110">
-                                    <div className="w-5 h-5 bg-white rounded-sm"></div>
-                                </div>
-                                <div className="bg-white/20 p-3 rounded-xl hover:bg-white/30 transition-all duration-300 cursor-pointer transform hover:scale-110">
-                                    <div className="w-5 h-5 bg-white rounded-sm"></div>
-                                </div>
-                                <div className="bg-white/20 p-3 rounded-xl hover:bg-white/30 transition-all duration-300 cursor-pointer transform hover:scale-110">
-                                    <div className="w-5 h-5 bg-white rounded-sm"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          <div>
+            <h4 className="text-sm font-extrabold uppercase tracking-[0.1em] text-[#141414]/60">Liên kết</h4>
+            <ul className="mt-4 space-y-2 text-sm text-[#141414]/80">
+              {quickLinks.map((link) => (
+                <li key={link}>
+                  <a href={`#${link.toLowerCase()}`} className="transition hover:text-[#a03039]">
+                    {link}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
 
-                <div className="border-t border-white/20 mt-16 pt-8">
-                    <div className="flex flex-col md:flex-row justify-between items-center">
-                        <p className="text-gray-300 mb-4 md:mb-0">&copy; 2025 {companyData.name}. All rights reserved.</p>
-                        <div className="flex space-x-6 text-sm text-gray-300">
-                            <a href="#" className="hover:text-white transition-colors duration-300">Privacy Policy</a>
-                            <a href="#" className="hover:text-white transition-colors duration-300">Terms of Service</a>
-                            <a href="#" className="hover:text-white transition-colors duration-300">Sitemap</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    );
+        <div className="p-5 text-center text-xs font-semibold tracking-[0.07em] text-[#141414]/60 md:p-6">
+          &copy; 2026 {companyData.name}. Tất cả quyền được bảo lưu.
+        </div>
+      </div>
+    </footer>
+  );
 };
 
-export default Footer
+export default Footer;
