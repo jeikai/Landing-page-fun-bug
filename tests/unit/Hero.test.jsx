@@ -1,9 +1,7 @@
 /* eslint-env jest */
-import { render, screen, fireEvent, act } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Hero from '../../src/components/Hero';
 import companyData from '../../src/data/companyData';
-
-jest.useFakeTimers();
 
 describe('Hero component', () => {
   beforeEach(() => {
@@ -21,30 +19,11 @@ describe('Hero component', () => {
     expect(screen.getByRole('link', { name: /Liên hệ ngay/i })).toHaveAttribute('href', '#liên hệ');
   });
 
-  test('renders background images and dots', () => {
-    const dots = screen.getAllByRole('button');
-    expect(dots.length).toBeGreaterThan(0); // should equal number of backgroundImages
+  test('renders 3D model showcase area', () => {
+    expect(screen.getByRole('img', { name: /3D laptop model showcase/i })).toBeInTheDocument();
   });
 
-  test('changes background image automatically over time', () => {
-    const firstDot = screen.getAllByRole('button')[0];
-    const secondDot = screen.getAllByRole('button')[1];
-
-    // ban đầu, dot 0 được chọn
-    expect(firstDot).toHaveClass('bg-[#a03039]');
-
-    act(() => {
-      jest.advanceTimersByTime(3000); // chạy interval
-    });
-
-    // sau 3s, chuyển sang dot 1
-    expect(secondDot).toHaveClass('bg-[#a03039]');
-  });
-
-  test('clicking dot changes background image manually', () => {
-    const thirdDot = screen.getAllByRole('button')[2];
-    fireEvent.click(thirdDot);
-
-    expect(thirdDot).toHaveClass('bg-[#a03039]');
+  test('renders slogan in 3D card', () => {
+    expect(screen.getByText(companyData.slogan)).toBeInTheDocument();
   });
 });

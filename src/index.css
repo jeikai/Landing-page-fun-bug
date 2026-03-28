@@ -67,3 +67,124 @@ h6 {
     linear-gradient(to bottom, rgba(20, 20, 20, 0.06) 1px, transparent 1px);
   background-size: 36px 36px;
 }
+
+.hero-scene {
+  position: relative;
+  height: 340px;
+  perspective: 1200px;
+}
+
+.hero-model-wrapper {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.hero-3d-canvas {
+  width: min(100%, 420px);
+  height: 320px;
+  border: 1px solid #ffffff26;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 28% 18%, #ffffff2e, transparent 48%),
+    radial-gradient(circle at 80% 72%, #a0303938, transparent 42%),
+    #0f0f12;
+  cursor: grab;
+  box-shadow: inset 0 0 28px #a0303947;
+}
+
+.hero-3d-canvas:active {
+  cursor: grabbing;
+}
+
+.hero-orbit {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  border-radius: 999px;
+  border: 1px dashed #ffffff55;
+  transform: translate(-50%, -50%);
+}
+
+.hero-orbit-1 {
+  width: 260px;
+  height: 260px;
+  animation: hero-orbit-a 14s linear infinite;
+}
+
+.hero-orbit-2 {
+  width: 320px;
+  height: 320px;
+  animation: hero-orbit-b 18s linear infinite;
+}
+
+.hero-tag {
+  position: absolute;
+  border: 1px solid #ffffff4d;
+  border-radius: 16px;
+  background: #ffffff12;
+  backdrop-filter: blur(6px);
+  padding: 0.55rem 0.75rem;
+}
+
+.hero-tag-1 {
+  top: 14px;
+  right: 10px;
+}
+
+.hero-tag-2 {
+  bottom: 18px;
+  left: 8px;
+}
+
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: rotateX(8deg) rotateY(8deg) translateY(-2px);
+  }
+  50% {
+    transform: rotateX(12deg) rotateY(-6deg) translateY(10px);
+  }
+}
+
+@keyframes hero-orbit-a {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes hero-orbit-b {
+  from {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-scene {
+    height: 270px;
+  }
+
+  .hero-3d-canvas {
+    height: 250px;
+  }
+
+  .hero-orbit-1 {
+    width: 210px;
+    height: 210px;
+  }
+
+  .hero-orbit-2 {
+    width: 258px;
+    height: 258px;
+  }
+
+  .hero-tag {
+    font-size: 12px;
+  }
+}

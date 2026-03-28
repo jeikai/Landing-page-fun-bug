@@ -4,6 +4,7 @@ import 'aos/dist/aos.css';
 import './index.css';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import HeroCarousel from './components/HeroCarousel';
 import Services from './components/Services';
 import Achievements from './components/Achievements';
 import Projects from './components/Projects';
@@ -20,6 +21,7 @@ function App() {
       <Header />
       <main className="pt-7 md:pt-8">
         <Hero />
+        <HeroCarousel />
         <Services />
         <Achievements />
         <Projects />
